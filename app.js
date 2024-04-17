@@ -50,18 +50,18 @@ class PokedexApp extends LitElement {
         ${this.selectedPokemon ? html`
           <div class="evolution-list">
             <div class="container-card">
-              ${this.selectedPokemon.evolutions ? html`
-
                 ${this.selectedPokemon.evolutions.map(evolution => html`
-                  <evolution-card
-                    .evolution="${evolution}"
-                  ></evolution-card>
-                `)}
-              
-              `: html`
-                <p>hola</p>
-              `}
-              
+                  ${evolution ? html`
+                    ${console.log(evolution)}
+                    <evolution-card
+                      .evolution="${evolution}"
+                    ></evolution-card>
+                  ` : html`
+                    <evolution-card
+                      .evolution="${evolution}"
+                    ></evolution-card> `}
+                  
+                `)}       
             </div>
             <button @click="${this.handleBackButton}">Volver</button>
           </div>

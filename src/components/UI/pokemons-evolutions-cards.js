@@ -39,7 +39,6 @@ class EvolutionCard extends LitElement {
           <div class="card">
             <img src="/pokemons/no-evolution.webp" alt="No hay evolución">
             <p>No se hay evoluciones de este pokémon en nuestra base de datos</p>
-            <p>Type: ${this.evolution.type}</p>
           </div>
         `}
         
