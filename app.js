@@ -52,7 +52,6 @@ class PokedexApp extends LitElement {
             <div class="container-card">
                 ${this.selectedPokemon.evolutions.map(evolution => html`
                   ${evolution ? html`
-                    ${console.log(evolution)}
                     <evolution-card
                       .evolution="${evolution}"
                     ></evolution-card>
