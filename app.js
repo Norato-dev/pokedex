@@ -2,8 +2,9 @@ import { LitElement, html, css } from 'lit';
 import PokemonDataManager from './src/components/DataManagers/pokemons-dm.js';
 import './src/components/UI/pokemons-cards.js';
 import './src/components/UI/pokemons-evolutions-cards.js';
-import './src/components/UI/pokemon-form-info.js';
 import './src/components/UI/pokemons-modal.js';
+import './src/components/UI/pokemon-form-info.js';
+
 import styles from './app-styles.js'
 
 
@@ -49,11 +50,18 @@ class PokedexApp extends LitElement {
         ${this.selectedPokemon ? html`
           <div class="evolution-list">
             <div class="container-card">
-              ${this.selectedPokemon.evolutions.map(evolution => html`
-                <evolution-card
-                  .evolution="${evolution}"
-                ></evolution-card>
-              `)}
+              ${this.selectedPokemon.evolutions ? html`
+
+                ${this.selectedPokemon.evolutions.map(evolution => html`
+                  <evolution-card
+                    .evolution="${evolution}"
+                  ></evolution-card>
+                `)}
+              
+              `: html`
+                <p>hola</p>
+              `}
+              
             </div>
             <button @click="${this.handleBackButton}">Volver</button>
           </div>
@@ -108,12 +116,6 @@ class PokedexApp extends LitElement {
     this.editingEvolution = null;
   }
 
-  showModal(){
-    const modal = this.shadowRoot.querySelector('modal-component');
-    modal.removeAttribute('style');
-    modal.toggleModal();
-    console.log('abierto');
-    return;
-  }
+  
 }
 customElements.define('pokedex-app', PokedexApp);

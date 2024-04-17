@@ -25,3 +25,15 @@ usuario usa este check se debe mostrar un modal en donde se le indique que puede
 cambiarlo en el punto mas cercano, el modal solo es informativo.
 6. Se valorara explícitamente la definición de los componentes, el uso de diferentes tipos de
 componentes para cada necesidad (data manager, UI, DP)
+
+
+
+# Clonar el repositorio e iniciar el proyecto
+
+Usar el comando de git para clonar `git clone https://github.com/Norato-dev/pokedex.git`
+
+Usar el comando `npm i` para instalar las depencencias necesarias
+
+Ejecutar `json-server -w pokemon.json -p 3002` para arrancar json-server
+
+Y finalmente para arrancar el proyecto ejecutar `npm run dev`

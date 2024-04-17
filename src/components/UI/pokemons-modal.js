@@ -29,7 +29,7 @@ class ModalComponent extends LitElement {
 
   render() {
     return html`
-      <div class="modal" style="${this.isOpen ? 'display: flex;' : 'display: none;'}">
+      <div class="modal">
         <div class="modal-content">
           <div class="modal-header">
             <div class="modal-title">Es necesario que vayas a una oficina</div>

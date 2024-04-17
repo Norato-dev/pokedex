@@ -12,6 +12,11 @@ class EvolutionCard extends LitElement {
         evolution: { type: Object }
       };
     }
+    
+    constructor() {
+      super();
+      this.evolution = null;
+  }
   
     _handleEvolutionClick(){
         const editInfo = new CustomEvent('edit-info',{
@@ -24,11 +29,20 @@ class EvolutionCard extends LitElement {
 
     render() {
       return html`
-        <div class="card" @click="${this._handleEvolutionClick}">
-          <img src="${this.evolution.image}" alt="Imágen de ${this.evolution.name}">
-          <p>${this.evolution.name}</p>
-          <p>Type: ${this.evolution.type}</p>
-        </div>
+        ${this.evolution ? html`
+          <div class="card" @click="${this._handleEvolutionClick}">
+            <img src="${this.evolution.image}" alt="Imágen de ${this.evolution.name}">
+            <p>${this.evolution.name}</p>
+            <p>Type: ${this.evolution.type}</p>
+          </div>
+        `: html`
+          <div class="card">
+            <img src="/pokemons/no-evolution.webp" alt="No hay evolución">
+            <p>No se hay evoluciones de este pokémon en nuestra base de datos</p>
+            <p>Type: ${this.evolution.type}</p>
+          </div>
+        `}
+        
         
       `;
     }
