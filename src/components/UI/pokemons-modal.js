@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import styles from './pokemons-modal-styles';
+import styles from './pokemons-modal-styles.js';
 
 class ModalComponent extends LitElement {
     
@@ -7,9 +7,11 @@ class ModalComponent extends LitElement {
         return [styles];
     }
 
-  static properties = {
-    isOpen: { type: Boolean },
-  };
+    static get properties() {
+        return {
+            isOpen: { type: Boolean }
+        };
+    }
 
   constructor() {
     super();

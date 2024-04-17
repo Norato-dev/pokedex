@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit';
 import PokemonDataManager from './src/components/DataManagers/pokemons-dm.js';
 import './src/components/UI/pokemons-cards.js';
 import './src/components/UI/pokemons-evolutions-cards.js';
+import './src/components/UI/pokemon-form-info.js';
 import './src/components/UI/pokemons-modal.js';
 import styles from './app-styles.js'
 
@@ -17,7 +18,8 @@ class PokedexApp extends LitElement {
     return {
       pokemons: { type: Array },
       selectedPokemon: { type: Object },
-      editingEvolution: { type: Object}
+      editingEvolution: { type: Object},
+      isOpen: { type: Boolean }
     };
   }
 
@@ -27,6 +29,7 @@ class PokedexApp extends LitElement {
     this.selectedPokemon = null;
     this.dataManager = new PokemonDataManager();
     this.editingEvolution = null;
+    this.isOpen = false;
   }
 
   async connectedCallback() {
@@ -63,32 +66,12 @@ class PokedexApp extends LitElement {
           `)}
         `}
         ${this.editingEvolution ? html`
-          <div class="edit-form">
-            <h2>Editar Evolución</h2>
-            <form @submit="${this.handleSaveEvolution}">
-              <div class="form-group">
-                <label for="edit-name">Nombre:</label>
-                <input type="text" id="edit-name" .value="${this.editingEvolution.name}">
-              </div>  
-              <div class="form-group">  
-                <label for="edit-type">Type:</label>
-                <input type="text" id="edit-type" .value="${this.editingEvolution.type}">
-              </div> 
-              <div class="form-group">  
-                <label for="edit-image">Imagen:</label>
-                <input type="text" id="edit-image" .value="${this.editingEvolution.image}">
-              </div> 
-              <div class="form-group">
-                <label for="is-repeated">¿Está repetido?</label>
-                <input type="checkbox" id="is-repeated" name="isRepeated" @checked="${this.showModal}">
-              </div>
-              <div class="botton-group">
-                <button type="submit" class="primary">Guardar</button>
-                <button class="secondary" @click="${this.handleCancelEdit}">Cancelar</button>
-              </div>  
-            </form>
-          </div>
-          <modal-component"></modal-component>
+          <form-pokemon
+            .pokemon="${this.editingEvolution}"  
+          ></form-pokemon>
+          <modal-component"
+            .isOpen="${this.isOpen}"
+          ></modal-component>
         ` : html``}
       </div>
     `;
