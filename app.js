@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import PokemonDataManager from './src/components/DataManagers/pokemons-dm.js';
+import { PokemonDataManager, PokemonUpdateDataManager } from './src/components/DataManagers/pokemons-dm.js';
 import './src/components/UI/pokemons-cards.js';
 import './src/components/UI/pokemons-evolutions-cards.js';
 import './src/components/UI/pokemons-modal.js';
@@ -106,6 +106,7 @@ class PokedexApp extends LitElement {
     const image = form.querySelector('#edit-image').value;
 
     console.log('Evolution data updated:', { name, type, image });
+    const data = {}
 
     form.reset();
     this.editingEvolution = null;
