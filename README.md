@@ -34,6 +34,6 @@ Usar el comando de git para clonar `git clone https://github.com/Norato-dev/poke
 
 Usar el comando `npm i` para instalar las depencencias necesarias
 
-Ejecutar `json-server -w pokemon.json -p 3002` para arrancar json-server
+Ejecutar `json-server -w src/pokemon.json -p 3002` para arrancar json-server
 
 Y finalmente para arrancar el proyecto ejecutar `npm run dev`
