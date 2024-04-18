@@ -13,7 +13,7 @@ export class PokemonUpdateDataManager {
     async updatePokemonData(data){
 
         await fetch(`${url}?name=${data.name}`, {
-            method: 'PUT',
+            method: 'PATCH',
             body: JSON.stringify(data),
             header: {
                 'Content-Type': 'aplication/json'
