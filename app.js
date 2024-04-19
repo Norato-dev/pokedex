@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit';
 import { PokemonDataManager, PokemonUpdateDataManager } from './src/components/DataManagers/pokemons-dm.js';
 import './src/components/UI/pokemons-cards.js';
 import './src/components/UI/pokemons-evolutions-cards.js';
+import './src/components/UI/pokemons-no-evolutions-cards.js';
 import './src/components/UI/pokemons-modal.js';
 import './src/components/UI/pokemon-form-info.js';
 
@@ -50,22 +51,23 @@ class PokedexApp extends LitElement {
         ${this.selectedPokemon ? html`
           <div class="evolution-list">
             <div class="container-card">
+              ${this.selectedPokemon.evolutions !== '[]' ? html`
                 ${this.selectedPokemon.evolutions.map(evolution => html`
-                  ${evolution ? html`
-                    <evolution-card
-                      .evolution="${evolution}"
-                    ></evolution-card>
-                  ` : html`
-                    <evolution-card
-                      .evolution="${evolution}"
-                    ></evolution-card> `}
+                      ${console.log('evolution',evolution)}
+                      <evolution-card
+                        .evolution="${evolution}"
+                      ></evolution-card>
+                    
+                  `)}  
+              ` : html`
+                  <noevolution-card></noevolution-card>
+              `}
                   
-                `)}       
             </div>
             <button @click="${this.handleBackButton}">Volver</button>
           </div>
         ` : html`
-          ${this.pokemons.map(pokemon => html`
+          ${this.pokemons.map( pokemon => html`
             <pokemon-card
               .pokemon="${pokemon}"
               @pokemon-selected="${this.handlePokemonSelected}"
