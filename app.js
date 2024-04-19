@@ -60,7 +60,9 @@ class PokedexApp extends LitElement {
                     
                   `)}  
               ` : html`
-                  <noevolution-card></noevolution-card>
+                  <noevolution-card
+                  ></noevolution-card>
+
               `}
                   
             </div>
