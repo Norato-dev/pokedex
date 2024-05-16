@@ -23,7 +23,7 @@ class PokemonCard extends LitElement {
         <div class="card" @click="${this.handleCardClick}">
           <img src="${this.pokemon.image}" alt="Imagén de ${this.pokemon.name}">
           <h3>${this.pokemon.name}</h3>
-          <p>Type: ${this.pokemon.type}</p>
+          <p>Tipo: ${this.pokemon.type}</p>
         </div>
       `;
     }
